@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  display: block;
+  max-width: inherit;
+}
+
+.topnav a {
+  float: left;
+}
+
+.topnav .nav-button {
+  float: right;
+}
