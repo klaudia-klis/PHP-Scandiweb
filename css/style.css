@@ -5,13 +5,29 @@ body {
 .topnav {
   overflow: hidden;
   display: block;
-  max-width: inherit;
+  border-bottom: 1px black solid;
 }
 
 .topnav a {
   float: left;
+  padding: 0 0 0 30.5px;
 }
 
 .topnav .nav-button {
   float: right;
+  padding: 30.5px;
+}
+
+main {
+  padding: 30.5px;
+}
+
+.footer {
+  padding: 0 30.5px 0 30.5px;
+  text-align: center;
+  border-top: 1px black solid;
+}
+
+#DVD-m, #Book-m, #Furniture-m {
+  display: none;
 }

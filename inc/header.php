@@ -11,9 +11,9 @@
   <body class="center">
     
     <div class="topnav">
-      <a href="#"><h1>Product List</h1></a>
+      <a href="index.php"><h1>Product List</h1></a>
       <div class="nav-button">
-        <button>ADD</button>
+        <button><a href="add-product.php">ADD</a></button>
         <button class="delete-product-btn">MASS DELETE</button>
       </div>
     </div>
