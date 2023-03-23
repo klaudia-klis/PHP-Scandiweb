@@ -27,7 +27,7 @@
   
   <body class="center">
     <div class="topnav">
-      <a href="add-product.php"><h1>Product Add</h1></a>
+      <a href="add-product.php"><h1>Product add</h1></a>
       <div class="nav-button">
         <button>Save</button>
         <button>Cancel</button>
@@ -37,42 +37,42 @@
 <main>
   <form id="product_form" action='' method="POST">
     <label for="sku">SKU</label>
-    <input type="text" id="sku" required><br><br>
+    <input type="text" id="sku" placeholder="ABCD10101" required><br><br>
     
     <label for="name">Name</label>
-    <input type="text" id="name" required><br><br>
+    <input type="text" id="name" placeholder="War and Peace" required><br><br>
     
-    <label for="price">Price($)</label>
-    <input type="text" id="price" required><br><br>
+    <label for="price">Price ($)</label>
+    <input type="text" id="price" placeholder="20.00" required><br><br>
     
-    <label for="type">Type Switcher</label>
+    <label for="type" class="type-switcher">Type Switcher</label>
     <select onChange="typeSwitcher()" id="productType" name="type" form="product_form" required>
-      <option value="" disabled selected>--select--</option>
+      <option value="" disabled selected>Select type</option>
       <option value="DVD">DVD</option>
       <option value="Furniture">Furniture</option>
       <option value="Book">Book</option>
-    </select><br><br><br>
+    </select><br><br>
     
     <div id="DVD-m">
       <label for="size">Size (MB)</label>
-      <input type="text" id="size" required><br>
-      <p><small>Please provide size in MB</small></p><br><br>
+      <input type="text" id="size" placeholder="800" required><br>
+      <p><small>*Please provide size in MB.</small></p><br><br>
     </div>
     
     <div id="Furniture-m">
       <label for="height">Height (CM)</label>
-      <input type="text" id="height" required><br><br>
+      <input type="text" id="height" placeholder="200.00" required><br><br>
       <label for="width">Width (CM)</label>
-      <input type="text" id="width" required><br><br>
+      <input type="text" id="width" placeholder="40.00" required><br><br>
       <label for="length">Length (CM)</label>
-      <input type="text" id="length" required><br>
-      <p><small>Please provide dimensions in HxWxL format</small></p><br><br>
+      <input type="text" id="length" placeholder="60.00" required><br>
+      <p><small>*Please provide dimensions in HxWxL format.</small></p><br><br>
     </div>
     
     <div id="Book-m">
       <label for="weight">Weight (KG)</label>
-      <input type="text" id="weight" required>
-      <p><small>Please provide weight in KG</small></p>
+      <input type="text" id="weight" placeholder="1.00" required>
+      <p><small>*Please provide weight in KG.</small></p>
     </div>
     
   </form>
