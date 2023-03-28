@@ -29,11 +29,12 @@ button {
   background: white;
   border: none;
   box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.19);
-  width: 80px;
-  padding: 10px;
+  width: 120px;
+  padding: 5px;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 button a {
@@ -44,6 +45,7 @@ button a {
 main {
   padding: 30.5px;
   min-height: 78%;
+  margin: auto;
 }
 
 .footer {
@@ -70,7 +72,7 @@ label {
   letter-spacing: 2px;
 }
 
-input {
+input[type=text], input[type=number] {
   margin: 0 0 0 10px; 
   background: white;
   border: none;
@@ -79,6 +81,11 @@ input {
   padding: 10px;
   font-size: 14px;
   text-align-last: center;
+}
+
+input[type=checkbox] {
+  display: -webkit-box;
+  width: 40px;
 }
 
 select {
@@ -111,5 +118,36 @@ select {
   }
   
   p small {
-    padding: 165px;
+    padding-left: 165px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .delete-checkbox {
+    width: 200px;
+    margin: 20px;
+    background: white;
+    border: none;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 10px;
+    font-size: 20px;
+    text-align-last: center;
+    height: 180px;
+    letter-spacing: normal;
+  }
+  
+  .checkboxes {
+    display: flex;
+    flex-flow: wrap;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #sku_response {
+    display: inline;
+    font-weight: bold;
+    padding-left: 5px;
   }
