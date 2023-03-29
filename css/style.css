@@ -97,7 +97,7 @@ select {
   line-height: 1.5em;
   padding: 8px;
   width: 320px;
-  margin: 10px;
+  margin: 5px 10px 10px 10px;
   color: rgb(165, 165, 165);
   font-family: system-ui;
   font-size: 14px;
@@ -119,6 +119,10 @@ select {
   
   p small {
     padding-left: 165px;
+  }
+  
+  p {
+    margin-top: 0;
   }
   
   .hidden {
@@ -146,8 +150,15 @@ select {
     justify-content: center;
   }
   
-  #sku_response {
-    display: inline;
+  .errors {
+    display: block;;
+    font-size: small;
     font-weight: bold;
-    padding-left: 5px;
+    padding-left: 165px;
+    padding-top: 5px;
+    color: red;
+  }
+  
+  #name_err, #height_err, #width_err {
+    padding-bottom: 5px;
   }

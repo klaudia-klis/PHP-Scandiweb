@@ -34,7 +34,7 @@ $query1 = mysqli_query($conn, "select * from products");
   </div>
   
 </form>
-
+<br><br>
 <?php
 
 require __DIR__ . '/inc/footer.php';
