@@ -1,48 +1,99 @@
 <?php
-$_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']);
-  if(isset($_POST['sku']) && isset($_POST['name']) && isset($_POST['price']) && ($_POST['productType'] == 'Book') && isset($_POST['weight'])) {
-    $sku = $_POST["sku"];
-    $name = $_POST["name"];
-    $price = $_POST["price"];
-    $type = $_POST["productType"];
-    $weight = $_POST["weight"];
+ 
+  class Product {
+    public $sku;
+    public $name;
+    public $price;
+    public $type;
     
-    $sql = "INSERT INTO products (sku, name, price, type, weight) VALUES ('$sku', '$name', '$price', '$type', '$weight')";
-    $query= mysqli_query($conn, $sql);
-    
-    header('Location: index.php', true, 303); exit;
-    
-  } else if(isset($_POST['sku']) && isset($_POST['name']) && isset($_POST['price']) && ($_POST['productType'] == 'DVD') && isset($_POST['size'])) {
-    $sku = $_POST["sku"];
-    $name = $_POST["name"];
-    $price = $_POST["price"];
-    $type = $_POST["productType"];
-    $size = $_POST["size"];
-    
-    $sql = "INSERT INTO products (sku, name, price, type, size) VALUES ('$sku', '$name', '$price', '$type', '$size')";
-    $query= mysqli_query($conn, $sql);
-    
-    header('Location: index.php', true, 303); exit;
-    
-  } else if(isset($_POST['sku']) && isset($_POST['name']) && isset($_POST['price']) && ($_POST['productType'] == 'Furniture') && isset($_POST['width']) && isset($_POST['height']) && isset($_POST['length'])) {
-    $sku = $_POST["sku"];
-    $name = $_POST["name"];
-    $price = $_POST["price"];
-    $type = $_POST["productType"];
-    $height = $_POST["height"];
-    $length = $_POST["length"];
-    $width = $_POST["width"];
-    
-    $sql = "INSERT INTO products (sku, name, price, type, height, width, length) VALUES ('$sku', '$name', '$price', '$type', '$height', '$width', '$length')";
-    $query= mysqli_query($conn, $sql);
-    
-    header('Location: index.php', true, 303); exit;
-    
-  //  if($query) {
-  //    echo 'Entry successfull';
-  //  } else {
-  //    echo 'Error Occurred'; 
-  //  }
   }
-
+  
+  class DVD extends Product {
+    public $size;
+    
+    // Using constructor to initialize object's properties.
+    public function __construct() {
+      $this->sku = isset($_POST['sku']) ? $_POST['sku'] : null;
+      $this->name = isset($_POST['name']) ? $_POST['name'] : null;
+      $this->price = isset($_POST['price']) ? $_POST['price'] : null;
+      $this->type = isset($_POST['productType']) ? $_POST['productType'] : null;
+      $this->size = isset($_POST['size']) ? $_POST['size'] : null;
+    }
+    
+    public function insertDVDdata() {
+      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      
+      // Using prepared statement to prevent SQL injections.
+      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, size) VALUES (?, ?, ?, ?, ?)");
+      $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->size);
+      
+      $stmt->execute();
+      
+      // Using header function to prevent form resubmission.
+      header('Location: index.php', true, 303); exit;
+    }
+  }
+  
+  class Furniture extends Product {
+    public $height;
+    public $width;
+    public $length;
+    
+    public function __construct() {
+      $this->sku = isset($_POST['sku']) ? $_POST['sku'] : null;
+      $this->name = isset($_POST['name']) ? $_POST['name'] : null;
+      $this->price = isset($_POST['price']) ? $_POST['price'] : null;
+      $this->type = isset($_POST['productType']) ? $_POST['productType'] : null;
+      $this->height = isset($_POST['height']) ? $_POST['height'] : null;
+      $this->width = isset($_POST['width']) ? $_POST['width'] : null;
+      $this->length = isset($_POST['length']) ? $_POST['length'] : null;
+    }
+    
+    public function insertFurnitureData() {
+      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?)");
+      $stmt->bind_param('sssssss', $this->sku, $this->name, $this->price, $this->type, $this->height, $this->width, $this->length);
+      
+      $stmt->execute();
+      
+      header('Location: index.php', true, 303); exit;
+    }
+  }
+  
+  class Book extends Product {
+    public $weight;
+    
+    public function __construct() {
+      $this->sku = isset($_POST['sku']) ? $_POST['sku'] : null;
+      $this->name = isset($_POST['name']) ? $_POST['name'] : null;
+      $this->price = isset($_POST['price']) ? $_POST['price'] : null;
+      $this->type = isset($_POST['productType']) ? $_POST['productType'] : null;
+      $this->weight = isset($_POST['weight']) ? $_POST['weight'] : null;
+    }
+    
+    public function insertBookData() {
+      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, weight) VALUES (?, ?, ?, ?, ?)");
+      $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->weight);
+      
+      $stmt->execute();
+      
+      header('Location: index.php', true, 303); exit;
+    }
+  }
+  
+  $DVD = new DVD();
+  if(!empty($_POST) && ($_POST['productType'] == 'DVD')) {
+    $DVD->insertDVDdata();
+   }
+   
+  $Furniture = new Furniture();
+  if(!empty($_POST) && ($_POST['productType'] == 'Furniture')) {
+    $Furniture->insertFurnitureData();
+   }
+   
+  $Book = new Book();
+  if(!empty($_POST) && ($_POST['productType']) == 'Book') {
+    $Book->insertBookData();
+  }
 ?>

@@ -1,9 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$database = "productsDB";
+  $servername = "localhost";
+  $username = "root";
+  $password = "root";
+  $database = "productsDB";
 
   $conn = mysqli_connect($servername, $username, $password, $database);
   
@@ -11,4 +11,4 @@ $database = "productsDB";
     die('Could not connect:' . mysqli_error());
   }
   
-  ?>
+?>

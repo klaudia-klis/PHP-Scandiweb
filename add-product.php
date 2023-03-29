@@ -9,12 +9,14 @@
     </style>
     
     <script>
+    
+    // A function to dynamically changed the form when product type is switched.
       function typeSwitcher() {
         var sT = product_form.productType;
         
-        document.getElementById("DVD-m").style.display = "none";
-        document.getElementById("Furniture-m").style.display = "none";
-        document.getElementById("Book-m").style.display = "none";
+        document.getElementById("dvd-m").style.display = "none";
+        document.getElementById("furniture-m").style.display = "none";
+        document.getElementById("book-m").style.display = "none";
         
         document.getElementById("size").removeAttribute('required');
         document.getElementById("height").removeAttribute('required');
@@ -23,15 +25,15 @@
         document.getElementById("weight").removeAttribute('required');
         
         if (sT.value === 'DVD') {
-          document.getElementById("DVD-m").style.display = "block";
+          document.getElementById("dvd-m").style.display = "block";
           document.getElementById("size").setAttribute('required', '');
         } else if (sT.value === 'Furniture') {
-          document.getElementById("Furniture-m").style.display = "block";
+          document.getElementById("furniture-m").style.display = "block";
           document.getElementById("height").setAttribute('required', '');
           document.getElementById("width").setAttribute('required', '');
           document.getElementById("length").setAttribute('required', '');
         } else if (sT.value === 'Book') {
-          document.getElementById("Book-m").style.display = "block";
+          document.getElementById("book-m").style.display = "block";
           document.getElementById("weight").setAttribute('required', '');
         }
       }
@@ -40,6 +42,8 @@
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      
      <script> 
+     
+     // A function to check the uniqueness of provided by user SKU.
       $(document).ready(function(){
         
         $("#sku").keyup(function(){
@@ -66,6 +70,8 @@
     </script>
     
     <script>
+    
+    // Functions to check validations of provided by User inputs. 
       $(document).ready(function() {
         $('#sku').on('input', function () {
           check_sku();
@@ -93,6 +99,7 @@
         });
       });
     
+      // Validation for SKU input.
       function check_sku() {
         var pattern = /^[A-Za-z0-9]+$/;
         var sku = $('#sku').val();
@@ -109,8 +116,9 @@
         }
       }
       
+      // Validation for Name input.
       function check_name() {
-        var pattern = /^[A-Za-z0-9]+$/;
+        var pattern = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/;
         var name = $('#name').val();
         var valid_name = pattern.test(name);
         if (!valid_name && name !== '') {
@@ -128,6 +136,7 @@
         }
       }
       
+      // Validation for Price input.
       function check_price() {
         var pattern = /^\d*\.?\d*$/;
         var price = $('#price').val();
@@ -147,6 +156,7 @@
         }
       }
       
+      // Validation for Size input.
       function check_size() {
         var pattern = /^\d*\.?\d*$/;
         var size = $('#size').val();
@@ -166,6 +176,7 @@
         }
       }
       
+      // Validation for Weight input.
       function check_weight() {
         var pattern = /^\d*\.?\d*$/;
         var weight = $('#weight').val();
@@ -185,6 +196,7 @@
         }
       }
       
+      // Validation for Height input.
       function check_height() {
         var pattern = /^\d*\.?\d*$/;
         var height = $('#height').val();
@@ -204,6 +216,7 @@
         }
       }
       
+      // Validation for Width input.
       function check_width() {
         var pattern = /^\d*\.?\d*$/;
         var width = $('#width').val();
@@ -223,6 +236,7 @@
         }
       }
       
+      // Validation for Length input.
       function check_length() {
         var pattern = /^\d*\.?\d*$/;
         var length_ = $('#length').val();
@@ -250,7 +264,7 @@
       <a href="add-product.php"><h1>Product add</h1></a>
       <div class="nav-button">
         <button class="submit_button" name="submit_button" type="submit" form="product_form">Save</button>
-        <button><a href="index.php">Cancel</a></button>
+        <a href="index.php"><button>Cancel</button></a>
       </div>
     </div>
 
@@ -271,19 +285,19 @@
     <label for="type" class="type-switcher">Type Switcher</label>
     <select onChange="typeSwitcher()" id="productType" name="productType" form="product_form" required>
       <option value="" disabled selected>Select type</option>
-      <option value="DVD">DVD</option>
-      <option value="Furniture">Furniture</option>
-      <option value="Book">Book</option>
+      <option id="DVD" value="DVD">DVD</option>
+      <option id="Furniture" value="Furniture">Furniture</option>
+      <option id="Book" value="Book">Book</option>
     </select><br><br>
     
-    <div id="DVD-m">
+    <div id="dvd-m">
       <label for="size">Size (MB)</label>
       <input type="text" id="size" name="size" placeholder="800">
       <div class="errors" id="size_err"></div>
       <p><small>*Please provide size in MB.</small></p><br><br>
     </div>
     
-    <div id="Furniture-m">
+    <div id="furniture-m">
       <label for="height">Height (CM)</label>
       <input type="text" id="height" name="height" placeholder="200.00">
       <div class="errors" id="height_err"></div><br>
@@ -298,7 +312,7 @@
       <p><small>*Please provide dimensions in HxWxL format.</small></p><br><br>
     </div>
     
-    <div id="Book-m">
+    <div id="book-m">
       <label for="weight">Weight (KG)</label>
       <input type="text" id="weight" name="weight" placeholder="1.00">
       <div class="errors" id="weight_err"></div>

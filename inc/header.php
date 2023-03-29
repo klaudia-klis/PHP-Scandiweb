@@ -13,9 +13,9 @@
     <div class="topnav">
       <a href="index.php"><h1>Product List</h1></a>
       <div class="nav-button">
-        <button><a href="add-product.php">Add</a></button>
-        <button type="submit" form="checkbox-form" 
-        name="delete-product-btn" class="delete-product-btn">Mass delete</button>
+        <a href="add-product.php"><button>Add</button></a>
+        <button type="submit" id="delete-product-btn" form="checkbox-form" 
+        name="delete-product-btn">Mass delete</button>
       </div>
     </div>
     

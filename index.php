@@ -5,8 +5,9 @@ require __DIR__ . '/inc/header.php';
   include 'database.php';
   include 'delete.php';
   include 'insert_products.php';
-  
-$query1 = mysqli_query($conn, "select * from products");
+
+// Accessing all the data from database.
+$query1 = mysqli_query($conn, "SELECT * FROM products");
 
 ?>
 
@@ -17,8 +18,10 @@ $query1 = mysqli_query($conn, "select * from products");
   ?>  
       <label class="delete-checkbox">
         <input type="checkbox" name="delete_id[]" value="<?php echo $row1['id']; ?>">
-        <?php 
-          echo '<br>' . $row1[1] . '<br>' . $row1[2] . '<br>' . $row1[3] . '$' . '<br>';
+        <p><?= $row1[1] ?></p>
+        <p><?= $row1[2] ?></p>
+        <p><?= $row1[3] . ' $' ?></p>
+        <?php
           if($row1['type'] == 'Book') {
             echo 'Weight: ' . $row1['weight'] . ' KG';
           } else if ($row1['type'] == 'Furniture') {
