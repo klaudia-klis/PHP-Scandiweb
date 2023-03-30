@@ -1,14 +1,15 @@
 <?php
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "root";
-  $database = "productsDB";
-
-  $conn = mysqli_connect($servername, $username, $password, $database);
-  
-  if(!$conn){
-    die('Could not connect:' . mysqli_error());
+  class Connection {
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "root";
+    private $database = "productsDB";
+    
+    public function connect() {
+      $conn = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
+      return $conn;
+    }
   }
   
 ?>

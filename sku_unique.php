@@ -1,15 +1,17 @@
 <?php
  include 'database.php';
  
+ $conn = new Connection();
+ 
  if(isset($_POST['sku'])){
    
    // Using mysqli_real_escape_string function to create an SQL string used below in an SQL statement.
    
-   $sku = mysqli_real_escape_string($conn,$_POST['sku']);
+   $sku = mysqli_real_escape_string($conn->connect(), $_POST['sku']);
    
    $query = "SELECT COUNT(*) AS cntSku FROM products WHERE sku='".$sku."'";
    
-   $result = mysqli_query($conn, $query);
+   $result = mysqli_query($conn->connect(), $query);
    $response = ""; // No response for valid SKU.
    
    // Using jQuery method to remove attribute 'disabled' from Submit Form button when provided SKU is valid.

@@ -2,16 +2,15 @@
 
 require __DIR__ . '/inc/header.php';
 
-  include 'database.php';
   include 'delete.php';
-  include 'insert_products.php';
-
+  include 'database.php';
+  
   class All_Products {
     
     // Accessing all the data from database.
     public function display_all() {
-      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
-      $query1 = mysqli_query($conn, "SELECT * FROM products WHERE size IS NOT NULL OR weight IS NOT NULL OR (height IS NOT NULL AND width IS NOT NULL AND length IS NOT NULL)");
+      $conn = new Connection();
+      $query1 = mysqli_query($conn->connect(), "SELECT * FROM products WHERE size IS NOT NULL OR weight IS NOT NULL OR (height IS NOT NULL AND width IS NOT NULL AND length IS NOT NULL)");
       
       while ($row1 = mysqli_fetch_array($query1)) {
         echo "<label class='delete-checkbox'>";

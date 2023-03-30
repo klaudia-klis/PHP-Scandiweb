@@ -1,4 +1,5 @@
 <?php
+  include 'database.php';
  
   class Product {
     public $sku;
@@ -21,10 +22,9 @@
     }
     
     public function insertDVDdata() {
-      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
-      
       // Using prepared statement to prevent SQL injections.
-      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, size) VALUES (?, ?, ?, ?, ?)");
+      $conn = new Connection();
+      $stmt = $conn->connect()->prepare("INSERT INTO products (sku, name, price, type, size) VALUES (?, ?, ?, ?, ?)");
       $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->size);
       
       $stmt->execute();
@@ -50,7 +50,7 @@
     }
     
     public function insertFurnitureData() {
-      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      $conn = new Connection();
       $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?)");
       $stmt->bind_param('sssssss', $this->sku, $this->name, $this->price, $this->type, $this->height, $this->width, $this->length);
       
@@ -72,7 +72,7 @@
     }
     
     public function insertBookData() {
-      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      $conn = new Connection();
       $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, weight) VALUES (?, ?, ?, ?, ?)");
       $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->weight);
       
@@ -83,17 +83,17 @@
   }
   
   $DVD = new DVD();
-  if(!empty($_POST) && ($_POST['productType'] == 'DVD')) {
+  if(!empty($_POST) && (!empty($_POST['size']))) {
     $DVD->insertDVDdata();
-   }
+  }
    
   $Furniture = new Furniture();
-  if(!empty($_POST) && ($_POST['productType'] == 'Furniture')) {
+  if(!empty($_POST) && (!empty($_POST['height']))) {
     $Furniture->insertFurnitureData();
    }
    
   $Book = new Book();
-  if(!empty($_POST) && ($_POST['productType']) == 'Book') {
+  if(!empty($_POST) && (!empty($_POST['weight']))) {
     $Book->insertBookData();
   }
 ?>
