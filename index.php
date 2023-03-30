@@ -6,34 +6,34 @@ require __DIR__ . '/inc/header.php';
   include 'delete.php';
   include 'insert_products.php';
 
-// Accessing all the data from database.
-$query1 = mysqli_query($conn, "SELECT * FROM products");
-
+  class All_Products {
+    
+    // Accessing all the data from database.
+    public function display_all() {
+      $conn = mysqli_connect('localhost', 'root', 'root', 'productsDB');
+      $query1 = mysqli_query($conn, "SELECT * FROM products WHERE size IS NOT NULL OR weight IS NOT NULL OR (height IS NOT NULL AND width IS NOT NULL AND length IS NOT NULL)");
+      
+      while ($row1 = mysqli_fetch_array($query1)) {
+        echo "<label class='delete-checkbox'>";
+        echo "<input type='checkbox' name='delete_id[]' value=$row1[id]>";
+        echo "<p>$row1[sku]</p>";
+        echo "<p>$row1[name]</p>";
+        echo "<p>$row1[price] $</p>";
+        echo "<p id='display_size'>$row1[size]</p>";
+        echo "<p id='display_weight'>$row1[weight]</p>";
+        echo "<p>$row1[height] $row1[width] $row1[length]</p>";
+        echo "</label>";
+    }
+  }
+}
 ?>
 
 <form id="checkbox-form" method="post" action="index.php">
   <div class="checkboxes">
-  <?php
-      while ($row1 = mysqli_fetch_array($query1)) {
-  ?>  
-      <label class="delete-checkbox">
-        <input type="checkbox" name="delete_id[]" value="<?php echo $row1['id']; ?>">
-        <p><?= $row1[1] ?></p>
-        <p><?= $row1[2] ?></p>
-        <p><?= $row1[3] . ' $' ?></p>
-        <?php
-          if($row1['type'] == 'Book') {
-            echo 'Weight: ' . $row1['weight'] . ' KG';
-          } else if ($row1['type'] == 'Furniture') {
-            echo 'Dimension: ' . $row1['height'] . 'x' . $row1['width'] . 'x' . $row1['length']; 
-          } else if ($row1['type'] == 'DVD') {
-            echo 'Size: ' . $row1['size'] . ' MB';
-          }
-        ?>
-      </label>
-  <?php
-    }
-  ?>
+    <?php
+      $Display = new All_Products();
+      $Display->display_all();
+    ?> 
   </div>
   
 </form>
