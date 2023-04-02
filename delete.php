@@ -1,4 +1,7 @@
 <?php
+  include 'database.php';
+  $conn = new Connection();
+
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete-product-btn']) && isset($_POST['delete_id'])) {
     
     // Fetching all id numbers of the checked products.
@@ -8,7 +11,8 @@
     $extract_id = implode(',' , $all_id);
   
     // Using prepared statement to prevent SQL injections.
-    $query2 = $conn->prepare("DELETE FROM products WHERE id IN(?)");
+    $sql = $conn->connect();
+    $query2 = $sql->prepare("DELETE FROM products WHERE id IN(?)");
     $query2->bind_param('s', $extract_id);
     $query2->execute();
     

@@ -24,7 +24,8 @@
     public function insertDVDdata() {
       // Using prepared statement to prevent SQL injections.
       $conn = new Connection();
-      $stmt = $conn->connect()->prepare("INSERT INTO products (sku, name, price, type, size) VALUES (?, ?, ?, ?, ?)");
+      $sql = $conn->connect();
+      $stmt = $sql->prepare("INSERT INTO products (sku, name, price, type, size) VALUES (?, ?, ?, ?, ?)");
       $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->size);
       
       $stmt->execute();
@@ -51,7 +52,8 @@
     
     public function insertFurnitureData() {
       $conn = new Connection();
-      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?)");
+      $sql = $conn->connect();
+      $stmt = $sql->prepare("INSERT INTO products (sku, name, price, type, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?)");
       $stmt->bind_param('sssssss', $this->sku, $this->name, $this->price, $this->type, $this->height, $this->width, $this->length);
       
       $stmt->execute();
@@ -73,7 +75,8 @@
     
     public function insertBookData() {
       $conn = new Connection();
-      $stmt = $conn->prepare("INSERT INTO products (sku, name, price, type, weight) VALUES (?, ?, ?, ?, ?)");
+      $sql = $conn->connect();
+      $stmt = $sql->prepare("INSERT INTO products (sku, name, price, type, weight) VALUES (?, ?, ?, ?, ?)");
       $stmt->bind_param('sssss', $this->sku, $this->name, $this->price, $this->type, $this->weight);
       
       $stmt->execute();
