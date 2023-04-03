@@ -1,5 +1,6 @@
 <?php
-  include 'database.php';
+  include 'inc/autoload.php';
+  
   $conn = new Connection();
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete-product-btn']) && isset($_POST['delete_id'])) {

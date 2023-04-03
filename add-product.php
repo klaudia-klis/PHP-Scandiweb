@@ -7,7 +7,7 @@
     <title>Add product</title>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/js/script.js"></script>
      
   </head>
   

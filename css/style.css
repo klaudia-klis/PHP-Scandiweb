@@ -127,13 +127,13 @@ select {
   }
   
   .delete-checkbox {
-    width: 200px;
+    width: 210px;
     margin: 20px;
     background: white;
     border: none;
     box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.19);
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     text-align-last: center;
     height: 180px;
     letter-spacing: normal;

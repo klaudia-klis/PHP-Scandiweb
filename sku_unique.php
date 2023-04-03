@@ -1,5 +1,5 @@
 <?php
- include 'database.php';
+ include 'inc/autoload.php';
  
  $conn = new Connection();
  
