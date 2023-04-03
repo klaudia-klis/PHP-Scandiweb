@@ -2,6 +2,7 @@
 
 require __DIR__ . '/inc/header.php';
 
+// Using Autoloading to automatically include the class files from the src/ folder.
 include 'inc/autoload.php';
   
 ?>

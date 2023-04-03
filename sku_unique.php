@@ -1,4 +1,5 @@
 <?php
+// See comment on this line in index.php
  include 'inc/autoload.php';
  
  $conn = new Connection();
