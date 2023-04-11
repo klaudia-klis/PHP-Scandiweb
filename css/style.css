@@ -29,7 +29,7 @@ button {
   background: white;
   border: none;
   box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.19);
-  width: 120px;
+  width: 130px;
   padding: 5px;
   font-size: 14px;
   font-weight: bold;
@@ -83,7 +83,7 @@ input[type=text], input[type=number] {
   text-align-last: center;
 }
 
-input[type=checkbox] {
+input.delete-checkbox {
   display: -webkit-box;
   width: 40px;
   margin-bottom: 25px;
@@ -126,7 +126,7 @@ select {
     margin-top: 0;
   }
   
-  .delete-checkbox {
+  label.delete-checkbox {
     width: 210px;
     margin: 20px;
     background: white;
@@ -139,7 +139,7 @@ select {
     letter-spacing: normal;
   }
   
-  .delete-checkbox p {
+  label.delete-checkbox p {
     margin-bottom: 0; 
   }
   

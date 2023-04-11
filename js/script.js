@@ -57,24 +57,31 @@ $(document).ready(function() {
     check_sku();
   });
   $('#name').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_name();
   });
   $('#price').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_price();
   });
   $('#size').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_size();
   });
   $('#weight').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_weight();
   });
   $('#height').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_height();
   });
   $('#width').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_width();
   });
   $('#length').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_length();
   });
 });
@@ -112,6 +119,7 @@ function check_name() {
     return false;
   } else {
     $('#name_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -132,6 +140,7 @@ function check_price() {
     return false;
   } else {
     $('#price_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -152,6 +161,7 @@ function check_size() {
     return false;
   } else {
     $('#size_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -172,6 +182,7 @@ function check_weight() {
     return false;
   } else {
     $('#weight_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -192,6 +203,7 @@ function check_height() {
     return false;
   } else {
     $('#height_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -212,6 +224,7 @@ function check_width() {
     return false;
   } else {
     $('#width_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }
@@ -232,6 +245,7 @@ function check_length() {
     return false;
   } else {
     $('#length_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }

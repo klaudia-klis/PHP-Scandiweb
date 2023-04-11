@@ -18,7 +18,7 @@ class Furniture extends Product
   }
   
   public function insertFurnitureData() 
-  {
+  { 
     $conn = new Connection();
     $sql = $conn->connect();
     $stmt = $sql->prepare("INSERT INTO products (sku, name, price, type, height, width, length) VALUES (?, ?, ?, ?, ?, ?, ?)");

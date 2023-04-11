@@ -7,16 +7,12 @@ $conn = new Connection();
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete-product-btn']) && isset($_POST['delete_id'])) {
   
   // Fetching all id numbers of the checked products.
-  $all_id = $_POST['delete_id'];
-  
-  //Using implode function to get all id numbers as a string.
-  $extract_id = implode(',' , $all_id);
-
-  // Using prepared statement to prevent SQL injections.
-  $sql = $conn->connect();
-  $query2 = $sql->prepare("DELETE FROM products WHERE id IN(?)");
-  $query2->bind_param('s', $extract_id);
-  $query2->execute();
+  foreach($_POST['delete_id'] as $deletesku) {
+    $sql = $conn->connect();
+    $query2 = $sql->prepare("DELETE FROM products WHERE sku IN(?)");
+    $query2->bind_param('s', $deletesku);
+    $query2->execute();
+  }
   
   // Using header function to prevent form resubmission.
   header('Location: index.php', true, 303); exit;
