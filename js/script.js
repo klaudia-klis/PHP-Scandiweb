@@ -54,6 +54,7 @@ $(document).ready(function(){
 // Functions to check validations of provided by User inputs. 
 $(document).ready(function() {
   $('#sku').on('input', function () {
+    $('.submit_button').attr('disabled', '');
     check_sku();
   });
   $('#name').on('input', function () {
@@ -97,8 +98,12 @@ function check_sku() {
   } else if (!valid_sku && sku !== '') {
     $('#sku_err').html("This field should contain only letters and numbers.");
     return false;
+  } else if ( sku === '' ) {
+    $('#sku_err').html('');
+    return false;
   } else {
     $('#sku_err').html('');
+    $('.submit_button').removeAttr('disabled');
     return true;
   }
 }

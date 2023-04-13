@@ -13,7 +13,7 @@
     <div class="topnav">
       <a href="/index.php"><h1>Product List</h1></a>
       <div class="nav-button">
-        <a href="/add-product.php"><button>Add</button></a>
+        <a href="/add-product.php"><button>ADD</button></a>
         <button type="submit" id="delete-product-btn" form="checkbox-form" 
         name="delete-product-btn">Mass delete</button>
       </div>
