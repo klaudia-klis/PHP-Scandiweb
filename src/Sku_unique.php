@@ -15,8 +15,6 @@ class Sku_unique
      
      $result = mysqli_query($conn->connect(), $query);
      $response = ""; // No response for valid SKU.
-     
-     // Using jQuery method to remove attribute 'disabled' from Submit Form button when provided SKU is valid.
   
      if(mysqli_num_rows($result)) {
        $row = mysqli_fetch_array($result);
